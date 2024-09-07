@@ -11,11 +11,23 @@ import java.time.LocalDate;
  * @author ana
  */
 public class User {
+
     private String name;
     private String email;
     private String password;
     private LocalDate lastAcess;
     private Boolean active;
+
+    public User() {
+    }
+
+    public User(String name, String email, String password, LocalDate lastAcess, Boolean active) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.lastAcess = lastAcess;
+        this.active = active;
+    }
 
     public String getName() {
         return name;
@@ -56,6 +68,5 @@ public class User {
     public void setActive(Boolean active) {
         this.active = active;
     }
-    
-    
+
 }
