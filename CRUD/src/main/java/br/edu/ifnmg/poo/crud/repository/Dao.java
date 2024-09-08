@@ -1,16 +1,50 @@
 package br.edu.ifnmg.poo.crud.repository;
 
 import br.edu.ifnmg.poo.crud.entity.Entity;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
  * @author ana
  * @param <E>
  */
-public abstract class Dao<E extends Entity> 
+public abstract class Dao<E extends Entity>
         implements IDao<E> {
-    
+
     public static final String DB = "alphasystem";
 
-    
+    @Override
+    public Long saveOrUpdate(E e) {
+        Long id = 0L;
+        if (e.getId() == null || e.getId() <= 0) {
+            try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getSaveStatement(), Statement.RETURN_GENERATED_KEYS)) {
+                composeSaveOrUpdateStatement(preparedStatement, e);
+                System.out.println(">> SQL: " + preparedStatement);
+                preparedStatement.executeUpdate();
+
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    id = resultSet.getLong(1);
+                }
+
+            } catch (Exception exception) {
+                System.out.println(">> " + exception);
+            }
+        } else {
+            try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getSaveStatement())) {
+                composeSaveOrUpdateStatement(preparedStatement, e);
+                System.out.println(">> SQL: " + preparedStatement);
+                preparedStatement.executeUpdate();
+
+                id = ((Entity) e).getId();
+
+            } catch (Exception exception) {
+                System.out.println(">> " + exception);
+            }
+        }
+        return id;
+    }
+
 }
