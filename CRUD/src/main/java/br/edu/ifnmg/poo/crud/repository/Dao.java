@@ -30,7 +30,7 @@ public abstract class Dao<E extends Entity>
                 }
 
             } catch (Exception exception) {
-                System.out.println(">> " + exception);
+                System.out.println("Exception: " + exception);
             }
         } else {
             try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getSaveStatement())) {
@@ -41,10 +41,26 @@ public abstract class Dao<E extends Entity>
                 id = ((Entity) e).getId();
 
             } catch (Exception exception) {
-                System.out.println(">> " + exception);
+                System.out.println("Exception: " + exception);
             }
         }
         return id;
+    }
+
+    @Override
+    public E findById(Long id) {
+        try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getFindByIdStatement())) {
+            preparedStatement.setLong(1, id);
+            System.out.println(">> SQL: " + preparedStatement);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return extractObject(resultSet);
+            }
+        } catch (Exception exception) {
+            System.out.println("Exception: " + exception);
+        }
+        return null;
     }
 
 }
