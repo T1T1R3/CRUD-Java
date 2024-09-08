@@ -18,7 +18,7 @@ public class DbConnection {
     private static final String PASSWORD;
 
     static {
-        URL = "jdbc:mysql://127.0.0.1:3306/" + Dao.DB
+        URL = "jdbc:mariadb://localhost:3306/" + Dao.DB
                 + "?useUnicode=true"
                 + "&useJDBCCompliantTimezoneShift=true"
                 + "&serverTimezone=UTC"
