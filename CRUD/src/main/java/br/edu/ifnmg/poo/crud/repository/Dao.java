@@ -3,7 +3,12 @@ package br.edu.ifnmg.poo.crud.repository;
 import br.edu.ifnmg.poo.crud.entity.Entity;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -62,5 +67,22 @@ public abstract class Dao<E extends Entity>
         }
         return null;
     }
+
+    @Override
+    public List<E> extractObjects(ResultSet rs) {
+        List<E> objects = new ArrayList<>();
+
+        try {
+            while (rs.next()) {
+                objects.add(extractObject(rs));
+            }
+        } catch (SQLException exception) {
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, exception);
+        }
+
+        return objects.isEmpty() ? null : objects;
+    }
+
+    
 
 }
