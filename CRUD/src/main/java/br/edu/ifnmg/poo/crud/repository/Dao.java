@@ -96,6 +96,17 @@ public abstract class Dao<E extends Entity>
         return null;
     }
 
-    
+    @Override
+    public void delete(Long id) {
+        try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getDeleteStatement())) {
+            preparedStatement.setLong(1, id);
+            System.out.println(">> SQL: " + preparedStatement);
+            preparedStatement.executeUpdate();
+
+        } catch (Exception exception) {
+            System.out.println("Exception: " + exception);
+
+        }
+    }
 
 }
