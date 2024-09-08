@@ -38,7 +38,7 @@ public abstract class Dao<E extends Entity>
                 System.out.println("Exception: " + exception);
             }
         } else {
-            try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getSaveStatement())) {
+            try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getUpdateStatement())) {
                 composeSaveOrUpdateStatement(preparedStatement, e);
                 System.out.println(">> SQL: " + preparedStatement);
                 preparedStatement.executeUpdate();
@@ -95,5 +95,7 @@ public abstract class Dao<E extends Entity>
         }
         return null;
     }
+
+    
 
 }
