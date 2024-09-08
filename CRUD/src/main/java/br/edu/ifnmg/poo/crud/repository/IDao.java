@@ -28,9 +28,9 @@ public interface IDao<E extends Entity> {
     
     public void composeSaveOrUpdateStatement(PreparedStatement pstmt, E e);
 
-    public E extractObject(ResultSet resultSet);
+    public E extractObject(ResultSet rs);
 
-    public List<E> extractObjects(ResultSet resultSet);
+    public List<E> extractObjects(ResultSet rs);
     
     public Long saveOrUpdate(E e);
 
