@@ -10,7 +10,7 @@ import br.edu.ifnmg.poo.crud.entity.Entity;
 public abstract class Dao<E extends Entity> 
         implements IDao<E> {
     
-    public static final String DB = "usuarios";
+    public static final String DB = "alphasystem";
 
-
+    
 }
