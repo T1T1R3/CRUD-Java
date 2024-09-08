@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author ana
  */
-public class User extends Entity{
+public class User extends Entity {
 
     private String name;
     private String email;
@@ -35,6 +35,11 @@ public class User extends Entity{
     }
 
     public void setName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("Null name is not accepted.");
+        } else if (name.length() > 150) {
+            throw new IllegalArgumentException("The name exceeds 150 characters.");
+        }
         this.name = name;
     }
 
