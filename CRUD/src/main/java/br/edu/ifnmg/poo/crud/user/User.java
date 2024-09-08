@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.ifnmg.poo.crud.user;
 
 import br.edu.ifnmg.poo.crud.entity.Entity;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -16,17 +12,17 @@ public class User extends Entity {
     private String name;
     private String email;
     private String password;
-    private LocalDate lastAcess;
+    private LocalDateTime lastAccess;
     private Boolean active;
 
     public User() {
     }
 
-    public User(String name, String email, String password, LocalDate lastAcess, Boolean active) {
+    public User(String name, String email, String password, LocalDateTime lastAccess, Boolean active) {
         setName(name);
         setEmail(email);
         setPassword(password);
-        setLastAcess(lastAcess);
+        setLastAccess(lastAccess);
         setActive(active);
     }
 
@@ -69,15 +65,15 @@ public class User extends Entity {
         this.password = password;
     }
 
-    public LocalDate getLastAcess() {
-        return lastAcess;
+    public LocalDateTime getLastAccess() {
+        return lastAccess;
     }
 
-    public void setLastAcess(LocalDate lastAcess) {
-        if (lastAcess == null) {
+    public void setLastAccess(LocalDateTime lastAccess) {
+        if (lastAccess == null) {
             throw new IllegalArgumentException("Null lastAcess is not accepted.");
         }
-        this.lastAcess = lastAcess;
+        this.lastAccess = lastAccess;
     }
 
     public Boolean getActive() {
