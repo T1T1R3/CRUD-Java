@@ -83,6 +83,17 @@ public abstract class Dao<E extends Entity>
         return objects.isEmpty() ? null : objects;
     }
 
-    
+    @Override
+    public List<E> findAll() {
+        try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getFindAllStatement())) {
+            System.out.println(">> SQL: " + preparedStatement);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return extractObjects(resultSet);
+        } catch (Exception exception) {
+            System.out.println("Exception: " + exception);
+        }
+        return null;
+    }
 
 }
