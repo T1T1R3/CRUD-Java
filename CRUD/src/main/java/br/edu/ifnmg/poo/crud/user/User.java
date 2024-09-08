@@ -84,4 +84,15 @@ public class User extends Entity {
         this.active = active;
     }
 
+    @Override
+    public String toString() {
+        return "User{"
+                + "name=" + name
+                + ", email=" + email
+                + ", password=" + password
+                + ", lastAccess=" + lastAccess
+                + ", active=" + active
+                + '}';
+    }
+
 }
