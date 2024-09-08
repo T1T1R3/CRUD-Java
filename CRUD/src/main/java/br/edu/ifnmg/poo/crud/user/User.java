@@ -74,6 +74,9 @@ public class User extends Entity {
     }
 
     public void setLastAcess(LocalDate lastAcess) {
+        if (lastAcess == null) {
+            throw new IllegalArgumentException("Null lastAcess is not accepted.");
+        }
         this.lastAcess = lastAcess;
     }
 
