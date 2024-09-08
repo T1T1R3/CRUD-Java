@@ -12,6 +12,11 @@ import java.sql.ResultSet;
 public class UserDao extends Dao<User>{
     public static final String TABLE = "user";
 
+    @Override
+    public String getSaveStatement() {
+        return "insert into " + TABLE + "(name, email, password, lastAccess, active) values (?, ?, ?, ?, ?)";
+    }
+
     
     
     
