@@ -50,7 +50,7 @@ public class User extends Entity {
     public void setEmail(String email) {
         if (email == null) {
             throw new IllegalArgumentException("Null email is not accepted.");
-        } else if (name.length() > 255) {
+        } else if (email.length() > 255) {
             throw new IllegalArgumentException("The email exceeds 255 characters.");
         }
         this.email = email;
@@ -61,6 +61,11 @@ public class User extends Entity {
     }
 
     public void setPassword(String password) {
+        if (password == null) {
+            throw new IllegalArgumentException("Null password is not accepted.");
+        } else if (password.length() > 64) {
+            throw new IllegalArgumentException("The password exceeds 64 characters.");
+        }
         this.password = password;
     }
 
