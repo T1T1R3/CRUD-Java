@@ -4,13 +4,14 @@
  */
 package br.edu.ifnmg.poo.crud.user;
 
+import br.edu.ifnmg.poo.crud.entity.Entity;
 import java.time.LocalDate;
 
 /**
  *
  * @author ana
  */
-public class User {
+public class User extends Entity{
 
     private String name;
     private String email;
@@ -22,11 +23,11 @@ public class User {
     }
 
     public User(String name, String email, String password, LocalDate lastAcess, Boolean active) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.lastAcess = lastAcess;
-        this.active = active;
+        setName(name);
+        setEmail(email);
+        setPassword(password);
+        setLastAcess(lastAcess);
+        setActive(active);
     }
 
     public String getName() {
