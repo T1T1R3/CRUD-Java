@@ -17,7 +17,13 @@ public class UserDao extends Dao<User>{
         return "insert into " + TABLE + "(name, email, password, lastAccess, active) values (?, ?, ?, ?, ?)";
     }
 
+    @Override
+    public String getUpdateStatement() {
+        return "update " + TABLE + " email = ?, password = ?, lastAccess = ?, active = ? where id = ?";
+    }
+
     
+
     
     
 }
