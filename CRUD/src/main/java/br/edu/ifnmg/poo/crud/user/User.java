@@ -48,6 +48,11 @@ public class User extends Entity {
     }
 
     public void setEmail(String email) {
+        if (email == null) {
+            throw new IllegalArgumentException("Null email is not accepted.");
+        } else if (name.length() > 255) {
+            throw new IllegalArgumentException("The email exceeds 255 characters.");
+        }
         this.email = email;
     }
 
