@@ -1,5 +1,7 @@
 package br.edu.ifnmg.poo.crud.user;
 
+import br.edu.ifnmg.poo.crud.repository.Dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

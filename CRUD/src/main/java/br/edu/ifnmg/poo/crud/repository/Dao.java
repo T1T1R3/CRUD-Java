@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public abstract class Dao<E extends Entity>
         implements IDao<E> {
 
-    public static final String DB = "alphasystem";
+    public static final String DB = "userDB";
 
     @Override
     public Long saveOrUpdate(E e) {

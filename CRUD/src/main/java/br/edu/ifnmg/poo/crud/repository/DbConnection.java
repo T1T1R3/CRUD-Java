@@ -34,8 +34,8 @@ public class DbConnection {
 
         if (connection == null) {
             try {
-                System.out.println(">> Connected");
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                System.out.println("Connected");
             } catch (SQLException e) {
                 Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, e);
             }
