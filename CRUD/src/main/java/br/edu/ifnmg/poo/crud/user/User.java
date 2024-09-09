@@ -70,9 +70,6 @@ public class User extends Entity {
     }
 
     public void setLastAccess(LocalDateTime lastAccess) {
-        if (lastAccess == null) {
-            throw new IllegalArgumentException("Null lastAcess is not accepted.");
-        }
         this.lastAccess = lastAccess;
     }
 
@@ -84,8 +81,19 @@ public class User extends Entity {
         this.active = active;
     }
 
+
+
     @Override
     public String toString() {
+        if(lastAccess == null){
+            return "User{"
+                    + "name=" + name
+                    + ", email=" + email
+                    + ", password=" + password
+                    + ", lastAccess=" + "Never Accessed"
+                    + ", active=" + active
+                    + '}';
+            }
         return "User{"
                 + "name=" + name
                 + ", email=" + email
@@ -94,5 +102,6 @@ public class User extends Entity {
                 + ", active=" + active
                 + '}';
     }
+
 
 }
