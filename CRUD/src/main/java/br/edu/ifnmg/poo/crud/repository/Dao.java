@@ -26,7 +26,9 @@ public abstract class Dao<E extends Entity>
     public Long saveOrUpdate(E e) {
         Long id = 0L;
         if (e.getId() == null || e.getId() <= 0) {
-            try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getSaveStatement(), Statement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement preparedStatement
+                    = DbConnection.getConnection().prepareStatement(
+                            getSaveStatement(), Statement.RETURN_GENERATED_KEYS)) {
                 composeSaveOrUpdateStatement(preparedStatement, e);
                 preparedStatement.executeUpdate();
 
@@ -39,7 +41,8 @@ public abstract class Dao<E extends Entity>
                 System.out.println("Exception: " + exception);
             }
         } else {
-            try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getUpdateStatement())) {
+            try (PreparedStatement preparedStatement
+                    = DbConnection.getConnection().prepareStatement(getUpdateStatement())) {
                 composeSaveOrUpdateStatement(preparedStatement, e);
                 preparedStatement.executeUpdate();
 
@@ -54,7 +57,8 @@ public abstract class Dao<E extends Entity>
 
     @Override
     public E findById(Long id) {
-        try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getFindByIdStatement())) {
+        try (PreparedStatement preparedStatement
+                = DbConnection.getConnection().prepareStatement(getFindByIdStatement())) {
             preparedStatement.setLong(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -84,7 +88,8 @@ public abstract class Dao<E extends Entity>
 
     @Override
     public List<E> findAll() {
-        try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getFindAllStatement())) {
+        try (PreparedStatement preparedStatement
+                = DbConnection.getConnection().prepareStatement(getFindAllStatement())) {
             ResultSet resultSet = preparedStatement.executeQuery();
             return extractObjects(resultSet);
         } catch (Exception exception) {
@@ -95,7 +100,8 @@ public abstract class Dao<E extends Entity>
 
     @Override
     public void delete(Long id) {
-        try (PreparedStatement preparedStatement = DbConnection.getConnection().prepareStatement(getDeleteStatement())) {
+        try (PreparedStatement preparedStatement
+                = DbConnection.getConnection().prepareStatement(getDeleteStatement())) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
 

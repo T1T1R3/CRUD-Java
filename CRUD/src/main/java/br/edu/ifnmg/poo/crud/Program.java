@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Program {
 
     public static void main(String[] args) {
 
-        // Adiciona usuários
+        //<editor-fold defaultstate="collapsed" desc="Adiciona usuários">
         User user1 = new User("Ana Zaira", "a.zaira@mail.com", "123",
                 LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(17, 0)), Boolean.TRUE);
 
@@ -33,8 +34,9 @@ public class Program {
 
         User user6 = new User("Fernanda Uchoa", "f.vale@mail.com", "369",
                 LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(23, 59)), Boolean.FALSE);
+        //</editor-fold>
 
-        // Adiciona usuários no banco de dados 
+        //<editor-fold defaultstate="collapsed" desc="Adiciona usuários no banco de dados ">
         Long user1id = new UserDao().saveOrUpdate(user1);
         user1.setId(user1id);
 
@@ -52,6 +54,7 @@ public class Program {
 
         Long user6id = new UserDao().saveOrUpdate(user6);
         user6.setId(user6id);
+        //</editor-fold>
 
         // Atualiza 'lastAccess' do user1
         user1.setLastAccess(LocalDateTime.now());
@@ -90,7 +93,7 @@ public class Program {
 
         // Imprime todos os objetos do banco de dados que possuem 'active' TRUE
         for (User user : allUser) {
-            if (user.getActive() == Boolean.TRUE) {
+            if (Objects.equals(user.getActive(), Boolean.TRUE)) {
                 System.out.println(user);
             }
         }
