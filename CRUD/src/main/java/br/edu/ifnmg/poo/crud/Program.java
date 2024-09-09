@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package br.edu.ifnmg.poo.crud;
-import java.sql.*;
 
-import br.edu.ifnmg.poo.crud.repository.DbConnection;
 import br.edu.ifnmg.poo.crud.user.User;
 import br.edu.ifnmg.poo.crud.user.UserDao;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -31,14 +24,12 @@ public class Program {
                 LocalDateTime.of(LocalDate.now().minusDays(2), LocalTime.of(12, 0)), Boolean.TRUE);
 
         User user4 = new User("Débora Wendel", "debora.w@mail.com", "147", null, Boolean.FALSE);
-        // para corrigir,na classe User, o lastAccess pode ser null
 
         User user5 = new User("Eugênia Vale", "e.vale@mail.com", "258",
                 LocalDateTime.of(LocalDate.now(), LocalTime.of(6, 0)), Boolean.TRUE);
 
         User user6 = new User("Fernanda Uchoa", "f.vale@mail.com", "369",
                 LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(23, 59)), Boolean.FALSE);
-
 
         Long user1id = new UserDao().saveOrUpdate(user1);
         user1.setId(user1id);
@@ -58,7 +49,6 @@ public class Program {
         Long user6id = new UserDao().saveOrUpdate(user6);
         user6.setId(user6id);
 
-
         user1.setLastAccess(LocalDateTime.now());
         new UserDao().saveOrUpdate(user1);
 
@@ -73,7 +63,6 @@ public class Program {
         user5.setLastAccess(LocalDateTime.now());
         new UserDao().saveOrUpdate(user5);
 
-
         User printUser3 = new UserDao().findById(3L);
         System.out.println(printUser3);
 
@@ -81,14 +70,16 @@ public class Program {
 
         List<User> allUser = new UserDao().findAll();
 
-        for(User user: allUser)
+        for (User user : allUser) {
             System.out.println(user);
+        }
 
         System.out.println();
 
-        for(User user: allUser){
-            if(user.getActive() == Boolean.TRUE)
+        for (User user : allUser) {
+            if (user.getActive() == Boolean.TRUE) {
                 System.out.println(user);
+            }
         }
 
         new UserDao().delete(4L);

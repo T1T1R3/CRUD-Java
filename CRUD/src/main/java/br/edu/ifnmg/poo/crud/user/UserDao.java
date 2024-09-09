@@ -1,4 +1,3 @@
-
 package br.edu.ifnmg.poo.crud.user;
 
 import br.edu.ifnmg.poo.crud.repository.Dao;
@@ -13,7 +12,8 @@ import java.util.logging.Logger;
  *
  * @author ana
  */
-public class UserDao extends Dao<User>{
+public class UserDao extends Dao<User> {
+
     public static final String TABLE = "user";
 
     @Override
@@ -44,23 +44,21 @@ public class UserDao extends Dao<User>{
     @Override
     public void composeSaveOrUpdateStatement(PreparedStatement pstmt, User e) {
         try {
-            if (e.getId() != null){
+            if (e.getId() != null) {
                 pstmt.setString(1, e.getEmail());
                 pstmt.setString(2, e.getPassword());
                 pstmt.setObject(3, e.getLastAccess(), Types.DATE);
                 pstmt.setBoolean(4, e.getActive());
                 pstmt.setLong(5, e.getId());
-            }
-            else{
+            } else {
                 pstmt.setString(1, e.getName());
                 pstmt.setString(2, e.getEmail());
                 pstmt.setString(3, e.getPassword());
                 pstmt.setObject(4, e.getLastAccess(), Types.DATE);
                 pstmt.setBoolean(5, e.getActive());
             }
-        }
-        catch (Exception ex){
-            System.out.println("Error: " +  ex);
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
         }
     }
 
@@ -83,6 +81,4 @@ public class UserDao extends Dao<User>{
         return user;
     }
 
-    
-    
 }

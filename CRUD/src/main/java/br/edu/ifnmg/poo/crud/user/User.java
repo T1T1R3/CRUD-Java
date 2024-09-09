@@ -81,11 +81,9 @@ public class User extends Entity {
         this.active = active;
     }
 
-
-
     @Override
     public String toString() {
-        if(lastAccess == null){
+        if (lastAccess == null) {
             return "User{"
                     + "name=" + name
                     + ", email=" + email
@@ -93,7 +91,7 @@ public class User extends Entity {
                     + ", lastAccess=" + "Never Accessed"
                     + ", active=" + active
                     + '}';
-            }
+        }
         return "User{"
                 + "name=" + name
                 + ", email=" + email
@@ -102,6 +100,5 @@ public class User extends Entity {
                 + ", active=" + active
                 + '}';
     }
-
 
 }
