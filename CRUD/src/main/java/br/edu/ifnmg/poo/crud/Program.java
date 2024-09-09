@@ -9,11 +9,14 @@ import java.util.List;
 
 /**
  *
- * @author ana
+ * @author AnaLuizanc
+ * @author T1T1R3
  */
 public class Program {
 
     public static void main(String[] args) {
+
+        // Adiciona usuários
         User user1 = new User("Ana Zaira", "a.zaira@mail.com", "123",
                 LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(17, 0)), Boolean.TRUE);
 
@@ -31,6 +34,7 @@ public class Program {
         User user6 = new User("Fernanda Uchoa", "f.vale@mail.com", "369",
                 LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(23, 59)), Boolean.FALSE);
 
+        // Adiciona usuários no banco de dados 
         Long user1id = new UserDao().saveOrUpdate(user1);
         user1.setId(user1id);
 
@@ -49,39 +53,49 @@ public class Program {
         Long user6id = new UserDao().saveOrUpdate(user6);
         user6.setId(user6id);
 
+        // Atualiza 'lastAccess' do user1
         user1.setLastAccess(LocalDateTime.now());
         new UserDao().saveOrUpdate(user1);
 
+        // Atualiza 'active' do user3
         user3.setActive(Boolean.FALSE);
         new UserDao().saveOrUpdate(user3);
 
+        // Atualiza 'email' e 'password' do user4
         user4.setEmail("d.wendel@mail.com");
         user4.setPassword("&Yh4$Wu9");
         new UserDao().saveOrUpdate(user4);
 
+        // Atualiza 'password' e 'lastAccess' do user5
         user5.setPassword("asdfqwerty");
         user5.setLastAccess(LocalDateTime.now());
         new UserDao().saveOrUpdate(user5);
 
+        // Imprime o 3° objeto do banco de dados
         User printUser3 = new UserDao().findById(3L);
         System.out.println(printUser3);
 
+        // Quebra de linha
         System.out.println();
 
+        // Imprime todos os objetos do banco de dados
         List<User> allUser = new UserDao().findAll();
 
         for (User user : allUser) {
             System.out.println(user);
         }
 
+        // Quebra de linha
         System.out.println();
 
+        // Imprime todos os objetos do banco de dados que possuem 'active' TRUE
         for (User user : allUser) {
             if (user.getActive() == Boolean.TRUE) {
                 System.out.println(user);
             }
         }
 
+        // Deleta o 4° objeto do banco de dados
         new UserDao().delete(4L);
 
     }

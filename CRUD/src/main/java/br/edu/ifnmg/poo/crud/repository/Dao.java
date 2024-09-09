@@ -11,8 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Class Dao
  *
- * @author ana
+ * @author AnaLuizanc
+ * @author T1T1R3
  * @param <E>
  */
 public abstract class Dao<E extends Entity>

@@ -9,8 +9,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Class UserDao
  *
- * @author ana
+ * <code>
+ * CREATE TABLE `user` (
+ * `id` INT PRIMARY KEY AUTO_INCREMENT,
+ * `name` VARCHAR(150) NOT NULL,
+ * `email` VARCHAR(255) NOT NULL,
+ * `password VARCHAR(64) NOT NULL,
+ * `lastAccess` DATETIME,
+ * `active` BOOLEAN DEFAULT FALSE
+ * );
+ * </code>
+ *
+ * @author AnaLuizanc
+ * @author T1T1R3
  */
 public class UserDao extends Dao<User> {
 

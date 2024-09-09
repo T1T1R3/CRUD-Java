@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.util.List;
 
 /**
+ * Interface IDao
  *
- * @author ana
+ * @author AnaLuizanc
+ * @author T1T1R3
  * @param <E>
  */
 public interface IDao<E extends Entity> {

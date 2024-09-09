@@ -4,8 +4,10 @@ import br.edu.ifnmg.poo.crud.entity.Entity;
 import java.time.LocalDateTime;
 
 /**
+ * Classe User
  *
- * @author ana
+ * @author AnaLuizanc
+ * @author T1T1R3
  */
 public class User extends Entity {
 

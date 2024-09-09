@@ -1,8 +1,10 @@
 package br.edu.ifnmg.poo.crud.entity;
 
 /**
+ * Class Entity
  *
- * @author ana
+ * @author AnaLuizanc
+ * @author T1T1R3
  */
 public class Entity {
 
