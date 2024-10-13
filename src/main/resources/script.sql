@@ -1,0 +1,9 @@
+CREATE TABLE user (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(64) NOT NULL,
+
+    lastAccess DATETIME,
+    active BOOLEAN DEFAULT FALSE
+);
